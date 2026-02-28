@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>CSCALIPUR AI Test</h2>
+
+<input id="msg" placeholder="Message type करो" />
+<button onclick="send()">Send</button>
+
+<p id="response"></p>
+
+<script>
+function send() {
+  const message = document.getElementById("msg").value;
+
+  fetch("https://csc-ylts.onrender.com/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: message })
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("response").innerText = data.reply;
+  })
+  .catch(err => console.error(err));
+}
+</script>
+
+</body>
+</html>
