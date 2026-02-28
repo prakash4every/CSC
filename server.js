@@ -33,7 +33,7 @@ app.post("/chat", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are CSCALIPUR Digital Assistant. Answer only in Hindi. Give short, clear answers related to Indian government and CSC services."
+            content: "आप CSC अलीपुर डिजिटल सहायक हैं। हमेशा 'अलीपुर' सही वर्तनी में लिखें। केवल हिंदी में संक्षिप्त और स्पष्ट उत्तर दें। भारतीय सरकारी सेवाओं और CSC सेवाओं से संबंधित जानकारी दें।"
           },
           { role: "user", content: userMessage }
         ]
