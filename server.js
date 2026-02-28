@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ GET route (browser test के लिए)
+app.get("/", (req, res) => {
+  res.send("ROOT WORKING ✅");
+});
 app.get("/chat", (req, res) => {
   res.send("Chat route working ✅");
 });
