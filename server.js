@@ -9,6 +9,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ✅ GET route (browser test के लिए)
+app.get("/chat", (req, res) => {
+  res.send("Chat route working ✅");
+});
+
+// ✅ POST route (API call के लिए)
 app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
 
@@ -41,22 +47,3 @@ app.post("/chat", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-const express = require("express");
-const app = express();
-
-app.use(express.json());
-
-// 👇 यहाँ GET route add करो
-app.get("/chat", (req, res) => {
-  res.send("Chat route working ✅");
-});
-
-// 👇 तुम्हारा existing POST route
-app.post("/chat", async (req, res) => {
-   ...
-});
-
-// 👇 सबसे नीचे listen होना चाहिए
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Server started");
-});
