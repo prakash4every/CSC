@@ -41,7 +41,13 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
-    res.json({ reply: data.choices[0].message.content });
+
+// 🔴 Safety Check
+if (!data.choices || !data.choices[0]) {
+  return res.json({ reply: "API से सही response नहीं मिला।" });
+}
+
+res.json({ reply: data.choices[0].message.content });
 
   } catch (error) {
     res.status(500).json({ reply: "कुछ तकनीकी समस्या है, कृपया बाद में प्रयास करें।" });
